@@ -8,8 +8,8 @@ let userSchema = new Schema({
 
 	email: {type:String, required:true,unique:true},
 	name : String,
-	admin: {type:Boolean, default: false}
-
+	admin: {type:Boolean, default: false},
+	
 
 });
 

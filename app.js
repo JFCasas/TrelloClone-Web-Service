@@ -5,6 +5,8 @@ var logger = require('morgan');
 
 var bodyParser = require('body-parser');
 
+const jwtMiddleware = require('express-jwt')
+
 var db = require("./config/database.js");
 
 db.connect();
@@ -26,7 +28,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(jwtMiddleware({secret:'dfhwgfreufewhfgdhgrehgehgrmenteehrhg'})
 
+  .unless({path:['/sessions','/users'], method:'GET'})
+
+)
 app.use('/dashboards', dashboards)
 app.use('/users', users);
 app.use('/sessions', sessions);

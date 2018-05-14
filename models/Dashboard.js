@@ -7,7 +7,8 @@ var Schema = mongoose.Schema;
 var dashboardSchema = new Schema({
 
 	name: {type:String, required:true},
-	slug: {type:String, unique:true}
+	slug: {type:String, unique:true},
+	_user: {type: mongoose.Schema.Types.ObjectId, ref: "User",required:true}
 	
 
 });

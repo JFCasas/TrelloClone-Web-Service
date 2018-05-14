@@ -54,7 +54,7 @@ function create(req,res){
 
 	if (req.body.name) {dashboardData["name"] = req.body.name }
     
-	//dashboardData["_user"] = req.user.id
+	dashboardData["_user"] = req.user.id
 
     Dashboard.create(dashboardData).then((doc)=>{
 
