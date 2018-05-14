@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 const jwtMiddleware = require('express-jwt')
 
+const allowCORs = require('./middlewares/allowCORS')()
+
 var db = require("./config/database.js");
 
 db.connect();
@@ -28,9 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(allowCORs.unless({path:'/public'}))
+
 app.use(jwtMiddleware({secret:'dfhwgfreufewhfgdhgrehgehgrmenteehrhg'})
 
-  .unless({path:['/sessions','/users'], method:'GET'})
+  .unless({path:['/sessions','/users'], method:['GET','OPTIONS']})
 
 )
 app.use('/dashboards', dashboards)
