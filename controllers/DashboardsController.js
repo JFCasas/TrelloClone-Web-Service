@@ -1,4 +1,5 @@
 let Dashboard = require('../models/Dashboard')
+let User = require('../models/User')
 
 
 function find(req,res,next){
@@ -35,7 +36,9 @@ function index(req,res){
 
 	//Place.find()
 
-	Dashboard.find()
+	//console.log(req.user.id)
+
+	/*Dashboard.find()
 
 		.then((docs)=>{
 
@@ -44,6 +47,21 @@ function index(req,res){
 		}).catch((err)=>{
 
 			console.log(err)
+			res.json(err)
+		})*/
+
+	User.findOne({'_id':req.user.id})
+
+		.then((user)=>{
+
+			user.boards.then((boards)=>{
+
+				res.json(boards)
+			
+			})
+		
+		}).catch((err)=>{
+
 			res.json(err)
 		})
 }

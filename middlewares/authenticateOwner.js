@@ -5,5 +5,5 @@ module.exports = (req,res,next)=>{
 		return next()
 	}
 
-	next(new Error('You hace bo permissions to be here'))
+	next(new Error('You have bo permissions to be here'))
 }

@@ -17,6 +17,7 @@ db.connect();
 var dashboards = require('./routes/dashboards');
 var users = require('./routes/users');
 var sessions = require('./routes/sessions');
+var lists = require('./routes/lists')
 
 var app = express();
 
@@ -34,12 +35,13 @@ app.use(allowCORs.unless({path:'/public'}))
 
 app.use(jwtMiddleware({secret:'dfhwgfreufewhfgdhgrehgehgrmenteehrhg'})
 
-  .unless({path:['/sessions','/users'], method:['GET','OPTIONS']})
+  .unless({path:['/sessions','/users'], method:['OPTIONS']})
 
 )
 app.use('/dashboards', dashboards)
 app.use('/users', users);
 app.use('/sessions', sessions);
+app.use('/lists',lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
