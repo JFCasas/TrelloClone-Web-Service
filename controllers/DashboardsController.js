@@ -8,7 +8,10 @@ function find(req,res,next){
 
 		.then((doc)=>{
 
+			
+
 			req.dashboard = doc
+			//console.log(req.dashboard)
 			req.mainObj = doc
 			next()
 		})
@@ -119,6 +122,28 @@ function destroy(req,res){
 	    })
 }
 
+function myLists(req,res){
+
+	Dashboard.findOne({'_id':req.dashboard.id})
+
+		.then((dashboard)=>{
+
+			//res.json(place)
+
+			dashboard.lists.then((lists)=>{
+
+				res.json(lists)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+}
+
+
+
 
 
 module.exports = {
@@ -128,4 +153,5 @@ module.exports = {
 	show:show,
 	destroy:destroy,
 	find:find,
+	myLists:myLists
 }

@@ -26,5 +26,16 @@ router.route('/:slug')
 		dashboardsController.destroy
 		)
 
+router.route('/:slug/lists')
+
+	.get(
+
+		dashboardsController.find,
+		dashboardsController.myLists
+		
+		)
+
+
+
 
 module.exports = router;

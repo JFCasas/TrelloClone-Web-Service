@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const slugify = require("../plugins/slugify")
 
+const List = require("./List")
+
 var Schema = mongoose.Schema;
 
 var dashboardSchema = new Schema({
@@ -12,6 +14,19 @@ var dashboardSchema = new Schema({
 	
 
 });
+
+dashboardSchema.virtual('lists').get(function(){
+
+	return List.find({'_dashboard':this._id}).sort('-id')
+
+		.then((lists)=>{
+
+			return lists
+
+			
+		})
+
+})
 
 dashboardSchema.pre('save',function(next){
 

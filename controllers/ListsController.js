@@ -1,5 +1,5 @@
 let List = require('../models/List')
-
+let Dashboard = require('../models/Dashboard')
 
 function find(req,res,next){
 
@@ -46,6 +46,21 @@ function index(req,res){
 			console.log(err)
 			res.json(err)
 		})
+
+	/*Dashboard.findOne({'_id':req.dashboard._id})
+
+		.then((dashboard)=>{
+
+			dashboard.lists.then((lists)=>{
+
+				res.json(lists)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})*/
 }
 
 function create(req,res){
