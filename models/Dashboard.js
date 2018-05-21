@@ -34,6 +34,12 @@ dashboardSchema.pre('save',function(next){
 	next()
 })
 
+dashboardSchema.pre('remove',function(next){
+
+	List.remove({_dashboard: this._id}).exec();
+	next()
+})
+
 
 //Definimos el modelo
 

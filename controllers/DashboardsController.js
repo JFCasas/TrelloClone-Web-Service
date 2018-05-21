@@ -108,7 +108,7 @@ function show(req,res){
 
 
 
-function destroy(req,res){
+/*function destroy(req,res){
 
 	//Eliminar un recurso
 
@@ -120,6 +120,26 @@ function destroy(req,res){
 			console.log(err)
 			res.json(err)
 	    })
+}*/
+
+function destroy(req,res){
+
+	//Eliminar un recurso
+
+	Dashboard.findOne({slug:req.params.slug})
+
+        .then((dashboard) => {
+
+        	dashboard.remove()
+        	res.json({message: "El elemento se ha eliminado correctamente"}) 
+
+        }).catch((err)=>{
+
+			console.log(err)
+			res.json(err)
+	    })
+        
+        
 }
 
 function myLists(req,res){
