@@ -18,6 +18,7 @@ var dashboards = require('./routes/dashboards');
 var users = require('./routes/users');
 var sessions = require('./routes/sessions');
 var lists = require('./routes/lists')
+var tasks = require('./routes/tasks')
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/dashboards', dashboards)
 app.use('/users', users);
 app.use('/sessions', sessions);
 app.use('/lists',lists);
+app.use('/tasks',tasks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
