@@ -107,10 +107,14 @@ function destroy(req,res){
 
 	//Eliminar un recurso
 
-	List.findOneAndRemove({slug:req.params.slug})
+	List.findOne({slug:req.params.slug})
 
-        .then(() => res.json({message: "El elemento se ha eliminado correctamente"}))
-        .catch((err)=>{
+        .then((list) => {
+
+        	list.remove()
+        	res.json({message: "El elemento se ha eliminado correctamente"}) 
+
+        }).catch((err)=>{
 
 			console.log(err)
 			res.json(err)

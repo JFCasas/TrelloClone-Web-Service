@@ -34,6 +34,12 @@ listSchema.virtual('tasks').get(function(){
 
 })
 
+listSchema.pre('remove',function(next){
+
+	Task.remove({_list: this._id}).exec();
+	next()
+})
+
 
 //Definimos el modelo
 

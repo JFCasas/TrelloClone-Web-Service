@@ -10,7 +10,7 @@ var taskSchema = new Schema({
 	slug: {type:String, unique:true},
 	_user: {type: mongoose.Schema.Types.ObjectId, ref: "User",required:true},
 	_dashboard: {type: mongoose.Schema.Types.ObjectId, ref: "Dashboard",required:true},
-	_list: {type: mongoose.Schema.Types.ObjectId, ref: "Dashboard",required:true},
+	_list: {type: mongoose.Schema.Types.ObjectId, ref: "List",required:true},
 	done: {type:Boolean, default: false} 
 
 });

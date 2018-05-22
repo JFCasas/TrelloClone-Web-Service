@@ -4,6 +4,8 @@ const slugify = require("../plugins/slugify")
 
 const List = require("./List")
 
+const Task = require("./Task")
+
 var Schema = mongoose.Schema;
 
 var dashboardSchema = new Schema({
@@ -37,6 +39,9 @@ dashboardSchema.pre('save',function(next){
 dashboardSchema.pre('remove',function(next){
 
 	List.remove({_dashboard: this._id}).exec();
+
+	Task.remove({_dashboard: this._id}).exec();
+
 	next()
 })
 
