@@ -26,5 +26,14 @@ router.route('/:slug')
 		listsController.destroy
 		)
 
+router.route('/:slug/tasks')
+
+	.get(
+
+		listsController.find,
+		listsController.myTasks
+		
+		)
+
 
 module.exports = router;

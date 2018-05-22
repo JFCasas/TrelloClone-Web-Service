@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const slugify = require("../plugins/slugify")
 
+const Task = require("./Task")
+
 var Schema = mongoose.Schema;
 
 var listSchema = new Schema({
@@ -18,6 +20,18 @@ listSchema.pre('save',function(next){
 
 	this.slug = slugify(this.name)
 	next()
+})
+
+listSchema.virtual('tasks').get(function(){
+
+	return Task.find({'_list':this._id}).sort('-id')
+
+		.then((tasks)=>{
+
+			return tasks
+
+		})
+
 })
 
 

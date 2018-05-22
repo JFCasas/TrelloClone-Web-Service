@@ -117,6 +117,26 @@ function destroy(req,res){
 	    })
 }
 
+function myTasks(req,res){
+
+	List.findOne({'_id':req.list.id})
+
+		.then((list)=>{
+
+			//res.json(place)
+
+			list.tasks.then((tasks)=>{
+
+				res.json(tasks)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+}
+
 
 
 module.exports = {
@@ -126,4 +146,5 @@ module.exports = {
 	show:show,
 	destroy:destroy,
 	find:find,
+	myTasks:myTasks
 }
