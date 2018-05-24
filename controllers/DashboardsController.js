@@ -131,7 +131,7 @@ function destroy(req,res){
         .then((dashboard) => {
 
         	dashboard.remove()
-        	res.json({message: "El elemento se ha eliminado correctamente"}) 
+        	res.json(dashboard) 
 
         }).catch((err)=>{
 
