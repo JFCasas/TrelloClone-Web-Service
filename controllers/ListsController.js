@@ -110,9 +110,9 @@ function destroy(req,res){
 	List.findOne({slug:req.params.slug})
 
         .then((list) => {
-
+        	//console.log(list)
         	list.remove()
-        	res.json({message: "El elemento se ha eliminado correctamente"}) 
+        	res.json(list) 
 
         }).catch((err)=>{
 
