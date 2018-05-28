@@ -162,6 +162,26 @@ function myLists(req,res){
 		})
 }
 
+function myTasks(req,res){
+
+	Dashboard.findOne({'_id':req.dashboard.id})
+
+		.then((dashboard)=>{
+
+			//res.json(place)
+
+			dashboard.tasks.then((tasks)=>{
+
+				res.json(tasks)
+			
+			})
+		
+		}).catch((err)=>{
+
+			res.json(err)
+		})
+}
+
 
 
 
@@ -173,5 +193,6 @@ module.exports = {
 	show:show,
 	destroy:destroy,
 	find:find,
-	myLists:myLists
+	myLists:myLists,
+	myTasks:myTasks
 }

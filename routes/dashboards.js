@@ -35,6 +35,15 @@ router.route('/:slug/lists')
 		
 		)
 
+router.route('/:slug/tasks')
+
+	.get(
+
+		dashboardsController.find,
+		dashboardsController.myTasks
+		
+		)
+
 
 
 

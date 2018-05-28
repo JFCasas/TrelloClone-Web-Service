@@ -30,6 +30,21 @@ dashboardSchema.virtual('lists').get(function(){
 
 })
 
+dashboardSchema.virtual('tasks').get(function(){
+
+	return Task.find({'_dashboard':this._id}).sort('-id')
+
+		.then((tasks)=>{
+
+			return tasks
+
+			
+		})
+
+})
+
+
+
 dashboardSchema.pre('save',function(next){
 
 	this.slug = slugify(this.name)
