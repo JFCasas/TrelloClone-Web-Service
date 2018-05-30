@@ -117,7 +117,7 @@ function update(req,res){
 
       .then((task) => {
 
-			  task.set(placeData);
+			  task.set(taskData);
 			  
 			  task.save((err, updatedDoc) => {
 			    

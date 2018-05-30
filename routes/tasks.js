@@ -20,7 +20,7 @@ router.route('/:slug')
 
 	.get(tasksController.find,tasksController.show)
 
-	.delete(
+	.put(
 		tasksController.find,
 		authenticateOwner,
 		tasksController.update
