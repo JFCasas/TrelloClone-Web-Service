@@ -23,6 +23,12 @@ router.route('/:slug')
 	.delete(
 		tasksController.find,
 		authenticateOwner,
+		tasksController.update
+		)
+
+	.delete(
+		tasksController.find,
+		authenticateOwner,
 		tasksController.destroy
 		)
 

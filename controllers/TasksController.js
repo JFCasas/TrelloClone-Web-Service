@@ -103,6 +103,42 @@ function show(req,res){
 	  res.json(req.task)
 }
 
+function update(req,res){
+
+	//Actualizar un recurso
+
+	let taskData = {};
+
+	if (req.body.name) {taskData["name"] = req.body.name }
+    if (req.body._dashboard) {taskData["_dashboard"] = req.body._dashboard }
+    if (req.body._list) {taskData["_list"] = req.body._list }
+    
+    Task.findOne({slug:req.params.slug})
+
+      .then((task) => {
+
+			  task.set(placeData);
+			  
+			  task.save((err, updatedDoc) => {
+			    
+			    if (err){
+
+			    	console.log(err)
+			    	res.json(err)
+
+			    } 
+			    res.json(updatedDoc)
+			  });
+
+		})
+      
+        .catch((err)=>{
+
+			console.log(err)
+			res.json(err)
+	    })
+}
+
 
 
 function destroy(req,res){
@@ -134,4 +170,5 @@ module.exports = {
 	show:show,
 	destroy:destroy,
 	find:find,
+	update:update
 }
