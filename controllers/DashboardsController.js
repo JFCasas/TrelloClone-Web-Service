@@ -79,13 +79,13 @@ function create(req,res){
 
     Dashboard.create(dashboardData).then((doc)=>{
 
-		res.json(doc)
+		res.json({'success':true,doc})
 
 
 	}).catch((err)=>{
 		
 		console.log(err)
-		res.json(err)
+		res.json({'success':false, 'message':'Some Error Happened'} )
 
 	})
 }
