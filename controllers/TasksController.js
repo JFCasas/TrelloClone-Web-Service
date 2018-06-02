@@ -76,13 +76,14 @@ function create(req,res){
 
     Task.create(taskData).then((doc)=>{
 
-		res.json(doc)
+		res.json({'success':true,doc})
+		//res.json(doc)
 
 
 	}).catch((err)=>{
 		
 		console.log(err)
-		res.json(err)
+		res.json({'success':false, 'message':'Some Error Happened'} )
 
 	})
 }
