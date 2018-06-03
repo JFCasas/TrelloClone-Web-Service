@@ -66,3 +66,6 @@ dashboardSchema.pre('remove',function(next){
 let Dashboard = mongoose.model("Dashboard",dashboardSchema);
 
 module.exports = Dashboard;
+
+
+
