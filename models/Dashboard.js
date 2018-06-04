@@ -30,6 +30,7 @@ dashboardSchema.virtual('lists').get(function(){
 
 })
 
+
 dashboardSchema.virtual('tasks').get(function(){
 
 	return Task.find({'_dashboard':this._id}).sort('-id')
